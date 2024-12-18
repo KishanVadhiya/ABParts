@@ -5,6 +5,7 @@ require('dotenv').config();
 // Import routes
 const controlValveActiveRoutes = require('./routes/controlValveActiveRoutes');
 const controlValveSpareRoutes = require('./routes/controlValveSpareRoutes');
+const flowMeterActiveRoutes = require('./routes/flowMeterActiveRoutes');
 // Future: Add other routes as needed, e.g. controlValveSpareRoutes, flowMeterRoutes, etc.
 
 // Middleware imports
@@ -29,7 +30,7 @@ app.get('/', (req, res) => {
 app.use('/v1/api/control-valve-active', controlValveActiveRoutes);
 // Future: Add other route prefixes as needed
 app.use('/v1/api/control-valve-spare', controlValveSpareRoutes);
-// app.use('/v1/api/flow-meter-active', flowMeterActiveRoutes);
+app.use('/v1/api/flow-meter-active', flowMeterActiveRoutes);
 // app.use('/v1/api/flow-meter-spare', flowMeterSpareRoutes);
 
 // Start the server
