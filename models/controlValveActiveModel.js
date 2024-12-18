@@ -67,20 +67,17 @@ const deletePart = async (sr_no) => {
 };
 
 // Add a part from spare (transfer from control_valve_spare to control_valve_active)
-const addPartFromSpare = async (sr_no) => {
-    const transferQuery = `
-        INSERT INTO control_valve_active (department, c_nc, area, location, make, size, type, body_moc, trim_moc, cv, application, installation_year, date_of_procurement)
-        SELECT department, c_nc, area, location, make, size, type, body_moc, trim_moc, cv, application, installation_year, date_of_procurement 
-        FROM control_valve_spare WHERE sr_no = ?;
-        DELETE FROM control_valve_spare WHERE sr_no = ?;
-    `;
+const addPartFromSpare = async (sr_no,partDetails) => {
+    // const { department, c_nc, area, location, application, installation_year, date_of_procurement } = partDetails;
 
-    try {
-        const [result] = await db.query(transferQuery, [sr_no, sr_no]);
-        return result;  // Return the result of the transfer
-    } catch (err) {
-        throw new Error('Failed to add part from spare: ' + err.message);
-    }
+    // const {make, size, type, body, trim, cv} = partDetails;
+
+    // try {
+    //     const [result] = await db.query(transferQuery, [sr_no, sr_no]);
+    //     return result;  // Return the result of the transfer
+    // } catch (err) {
+    //     throw new Error('Failed to add part from spare: ' + err.message);
+    // }
 };
 
 module.exports = {

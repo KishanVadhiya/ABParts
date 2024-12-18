@@ -73,11 +73,12 @@ const deletePart = async (req, res) => {
 // Add part from spare
 const addPartFromSpare = async (req, res) => {
     const { sr_no } = req.params;
+    const partDetails = req.body;
     if (!sr_no) {
         return res.status(400).json({ success: false, message: 'Serial number is required' });
     }
     try {
-        const result = await controlValveActiveModel.addPartFromSpare(sr_no);
+        const result = await controlValveActiveModel.addPartFromSpare(sr_no,partDetails);
         res.status(200).json({ success: true, message: 'Part moved from spare successfully', data: result });
     } catch (err) {
         console.error('Error moving part from spare:', err);  // Log the error
