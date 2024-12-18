@@ -6,10 +6,10 @@ require('dotenv').config();
 const controlValveActiveRoutes = require('./routes/controlValveActiveRoutes');
 const controlValveSpareRoutes = require('./routes/controlValveSpareRoutes');
 const flowMeterActiveRoutes = require('./routes/flowMeterActiveRoutes');
-// Future: Add other routes as needed, e.g. controlValveSpareRoutes, flowMeterRoutes, etc.
+const flowMeterSpareRoutes = require('./routes/flowMeterSpareRoutes')
 
-// Middleware imports
-const { authMiddleware } = require('./middlewares/authMiddleware');
+
+// const { authMiddleware } = require('./middlewares/authMiddleware');
 
 const app = express();
 const port = process.env.PORT || 5500;
@@ -18,10 +18,10 @@ const port = process.env.PORT || 5500;
 app.use(cors());
 app.use(express.json());
 
-// Placeholder for global authentication (uncomment if needed in the future)
+
 // app.use(authMiddleware);
 
-// Default route (health check or root endpoint)
+
 app.get('/', (req, res) => {
   res.send('API is running...');
 });
@@ -31,7 +31,7 @@ app.use('/v1/api/control-valve-active', controlValveActiveRoutes);
 // Future: Add other route prefixes as needed
 app.use('/v1/api/control-valve-spare', controlValveSpareRoutes);
 app.use('/v1/api/flow-meter-active', flowMeterActiveRoutes);
-// app.use('/v1/api/flow-meter-spare', flowMeterSpareRoutes);
+app.use('/v1/api/flow-meter-spare', flowMeterSpareRoutes);
 
 // Start the server
 app.listen(port, () => {
