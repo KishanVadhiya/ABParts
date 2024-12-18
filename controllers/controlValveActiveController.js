@@ -29,7 +29,9 @@ const getPartsByDepartment = async (req, res) => {
 // Add a new part
 const addPart = async (req, res) => {
     const partDetails = req.body;
-    console.log("Inside Controller\n"+JSON.stringify(partDetails));
+    if(!partDetails.department){
+        return res.status(400).json({success: false, message: "Department field required"});
+    }
     try {
         const result = await controlValveActiveModel.addPart(partDetails);
         res.status(201).json({ success: true, message: 'Part added successfully', data: result });
@@ -76,6 +78,9 @@ const addPartFromSpare = async (req, res) => {
     const partDetails = req.body;
     if (!sr_no) {
         return res.status(400).json({ success: false, message: 'Serial number is required' });
+    }
+    if(!partDetails.department){
+        return res.status(400).json({success: false, message: "Department field required"});
     }
     try {
         const result = await controlValveActiveModel.addPartFromSpare(sr_no,partDetails);

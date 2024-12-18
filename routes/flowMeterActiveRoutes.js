@@ -19,6 +19,6 @@ router.patch('/parts/:sr_no', flowMeterController.updatePart);
 router.delete('/parts/:sr_no', flowMeterController.deletePart);
 
 // Route to add part from spare
-router.post('/parts/spare/:sr_no', flowMeterController.addPartFromSpare);
+router.post('/parts/from-spare/:sr_no', flowMeterController.addPartFromSpare);
 
 module.exports = router;

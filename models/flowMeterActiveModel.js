@@ -73,10 +73,34 @@ const deletePart = async (sr_no) => {
     }
 };
 
+const transferPart = async (sr_no,partDetails) =>{
+    const {department, c_nc, plant, make, type, application, installation_year, date_of_purchase} = partDetails;
+
+    try{
+        const [row] = await db.query('SELECT transferred_department, location, size, moc FROM flow_meter_spare WHERE sr_no = ?', [sr_no]);
+        const {transferred_department, location, size, moc} = row[0];
+
+        if(transferred_department != null){
+            throw new Error("Spare Part Already Transferred");
+        }
+
+        const transferQuery = `INSERT INTO flow_meter_active 
+        (department, c_nc, plant, location, make, size, type, moc, application, installation_year, date_of_purchase)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) `
+
+        db.query("UPDATE flow_meter_spare SET transferred_department=? where sr_no=?",[department,sr_no]);
+        const [result] = await db.query(transferQuery, [department, c_nc, plant, location, make, size, type, moc, application, installation_year, date_of_purchase]);
+        return result; 
+    }catch (err) {
+        throw new Error('Failed to add part from spare: ' + err.message);
+    }
+};
+
 module.exports = {
     getDepartments,
     getPartsByDepartment,
     addPart,
     updatePart,
-    deletePart
+    deletePart,
+    transferPart
 };

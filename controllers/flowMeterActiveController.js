@@ -29,7 +29,9 @@ const getPartsByDepartment = async (req, res) => {
 // Add a new part
 const addPart = async (req, res) => {
     const partDetails = req.body;
-    console.log("Inside Controller\n"+JSON.stringify(partDetails));
+    if(!partDetails.department){
+        res.status(400).json({success: false, message: 'Department required'});
+    }
     try {
         const result = await flowMeterActiveModel.addPart(partDetails);
         res.status(201).json({ success: true, message: 'Part added successfully', data: result });
@@ -72,18 +74,21 @@ const deletePart = async (req, res) => {
 
 // Add part from spare
 const addPartFromSpare = async (req, res) => {
-    // const { sr_no } = req.params;
-    // const partDetails = req.body;
-    // if (!sr_no) {
-    //     return res.status(400).json({ success: false, message: 'Serial number is required' });
-    // }
-    // try {
-    //     const result = await flowMeterActiveModel.addPartFromSpare(sr_no, partDetails);
-    //     res.status(200).json({ success: true, message: 'Part moved from spare successfully', data: result });
-    // } catch (err) {
-    //     console.error('Error moving part from spare:', err);  // Log the error
-    //     res.status(500).json({ success: false, message: 'Failed to move part from spare', error: err.message });
-    // }
+    const { sr_no } = req.params;
+    const partDetails = req.body;
+    if (!sr_no) {
+        return res.status(400).json({ success: false, message: 'Serial number is required' });
+    }
+    if(!partDetails.department){
+        return res.status(400).json({success: false, message: 'Department is required'});
+    }
+    try {
+        const result = await flowMeterActiveModel.transferPart(sr_no, partDetails);
+        res.status(200).json({ success: true, message: 'Part moved from spare successfully', data: result });
+    } catch (err) {
+        console.error('Error moving part from spare:', err);  // Log the error
+        res.status(500).json({ success: false, message: 'Failed to move part from spare', error: err.message });
+    }
 };
 
 module.exports = {
