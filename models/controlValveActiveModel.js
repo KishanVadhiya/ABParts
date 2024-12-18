@@ -40,14 +40,17 @@ const addPart = async (partDetails) => {
 
 // Update part details
 const updatePart = async (sr_no, updatedDetails) => {
-    const { department, c_nc, area, location, make, size, type, body_moc, trim_moc, cv, application, installation_year, date_of_procurement } = updatedDetails;
+    const fields = Object.keys(updatedDetails);
+    const values = Object.values(updatedDetails);
+    const setClause = fields.map(field => `${field} = ?`).join(', ');
+
     const query = `
         UPDATE control_valve_active 
-        SET department = ?, c_nc = ?, area = ?, location = ?, make = ?, size = ?, type = ?, body_moc = ?, trim_moc = ?, cv = ?, application = ?, installation_year = ?, date_of_procurement = ? 
+        SET ${setClause} 
         WHERE sr_no = ?`;
 
     try {
-        const [result] = await db.query(query, [department, c_nc, area, location, make, size, type, body_moc, trim_moc, cv, application, installation_year, date_of_procurement, sr_no]);
+        const [result] = await db.query(query, [...values, sr_no]);
         return result;  // Return the result of the update
     } catch (err) {
         throw new Error('Failed to update part: ' + err.message);
