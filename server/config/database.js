@@ -13,5 +13,4 @@ const pool = mysql.createPool({
   queueLimit: 0
 });
 
-// Export the pool for use in other files and ensure it's using the promise API
 module.exports = pool.promise();

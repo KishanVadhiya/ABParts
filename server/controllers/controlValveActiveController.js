@@ -36,7 +36,7 @@ const addPart = async (req, res) => {
         const result = await controlValveActiveModel.addPart(partDetails);
         res.status(201).json({ success: true, message: 'Part added successfully', data: result });
     } catch (err) {
-        console.error('Error adding part:', err);  // Log the error
+        console.error('Error adding part:', err);  
         res.status(500).json({ success: false, message: 'Failed to add part', error: err.message });
     }
 };
@@ -52,7 +52,7 @@ const updatePart = async (req, res) => {
         const result = await controlValveActiveModel.updatePart(sr_no, updatedDetails);
         res.status(200).json({ success: true, message: 'Part updated successfully', data: result });
     } catch (err) {
-        console.error('Error updating part:', err);  // Log the error
+        console.error('Error updating part:', err);  
         res.status(500).json({ success: false, message: 'Failed to update part', error: err.message });
     }
 };
@@ -67,7 +67,7 @@ const deletePart = async (req, res) => {
         const result = await controlValveActiveModel.deletePart(sr_no);
         res.status(200).json({ success: true, message: 'Part deleted successfully', data: result });
     } catch (err) {
-        console.error('Error deleting part:', err);  // Log the error
+        console.error('Error deleting part:', err); 
         res.status(500).json({ success: false, message: 'Failed to delete part', error: err.message });
     }
 };

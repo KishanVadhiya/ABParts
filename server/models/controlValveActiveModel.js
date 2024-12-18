@@ -22,7 +22,7 @@ const getPartsByDepartment = async (department) => {
 
 // Add a new part
 const addPart = async (partDetails) => {
-    console.log("Inside add part model\n"+partDetails);
+
     const { department, c_nc, area, location, make, size, type, body_moc, trim_moc, cv, application, installation_year, date_of_procurement } = partDetails;
     const query = `
         INSERT INTO control_valve_active 
@@ -69,11 +69,8 @@ const deletePart = async (sr_no) => {
     }
 };
 
-// Add a part from spare (transfer from control_valve_spare to control_valve_active)
 const addPartFromSpare = async (sr_no,partDetails) => {
     const { department, c_nc, area, location, application, installation_year, date_of_procurement } = partDetails;
-
-    
 
     try {
         const [rows]= await db.query("SELECT transferred_department, make, size, type, body, trim, cv from control_valve_spare where sr_no=?",[sr_no]);

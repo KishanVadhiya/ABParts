@@ -3,7 +3,7 @@ const router = express.Router();
 const controlValveActiveController = require('../controllers/controlValveActiveController');
 const { authMiddleware, authorizationMiddleware } = require('../middlewares/authMiddleware');
 
-// Routes for control_valve_active
+
 
 // Get departments
 router.get('/departments', authMiddleware, controlValveActiveController.getDepartments);
@@ -12,10 +12,7 @@ router.get('/departments', authMiddleware, controlValveActiveController.getDepar
 router.get('/parts', authMiddleware, controlValveActiveController.getPartsByDepartment);
 
 // Add a new part
-router.post('/parts', authMiddleware, authorizationMiddleware,(req, res, next) => {
-    console.log("Request Body at Route:", req.body);  // Log the body at the route level
-    next();  // Call the next middleware (controller)
-}, controlValveActiveController.addPart);
+router.post('/parts', authMiddleware, authorizationMiddleware, controlValveActiveController.addPart);
 
 // Update part details
 router.patch('/parts/:sr_no', authMiddleware, authorizationMiddleware, controlValveActiveController.updatePart);
