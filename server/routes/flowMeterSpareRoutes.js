@@ -4,15 +4,15 @@ const flowMeterSpareController = require('../controllers/flowMeterSpareControlle
 const router = express.Router();
 
 // Route to get all flow meter spares
-router.get('/', flowMeterSpareController.getParts);
+router.get('/parts', flowMeterSpareController.getParts);
 
 // Route to create a new flow meter spare
-router.post('/', flowMeterSpareController.addPart);
+router.post('/parts', flowMeterSpareController.addPart);
 
 // Route to update a flow meter spare by ID
-router.patch('/:id', flowMeterSpareController.updatePart);
+router.patch('/parts/:id', flowMeterSpareController.updatePart);
 
 // Route to delete a flow meter spare by ID
-router.delete('/:id', flowMeterSpareController.deletePart);
+router.delete('/parts/:id', flowMeterSpareController.deletePart);
 
 module.exports = router;

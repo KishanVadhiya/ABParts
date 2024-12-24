@@ -7,7 +7,7 @@ const controlValveActiveRoutes = require('./routes/controlValveActiveRoutes');
 const controlValveSpareRoutes = require('./routes/controlValveSpareRoutes');
 const flowMeterActiveRoutes = require('./routes/flowMeterActiveRoutes');
 const flowMeterSpareRoutes = require('./routes/flowMeterSpareRoutes')
-
+const getColumnsRoutes = require('./routes/getColumnRoutes');
 
 // const { authMiddleware } = require('./middlewares/authMiddleware');
 
@@ -19,7 +19,6 @@ app.use(cors());
 app.use(express.json());
 
 
-// app.use(authMiddleware);
 
 
 app.get('/', (req, res) => {
@@ -28,10 +27,10 @@ app.get('/', (req, res) => {
 
 // API routes with versioning (/v1)
 app.use('/v1/api/control-valve-active', controlValveActiveRoutes);
-// Future: Add other route prefixes as needed
 app.use('/v1/api/control-valve-spare', controlValveSpareRoutes);
 app.use('/v1/api/flow-meter-active', flowMeterActiveRoutes);
 app.use('/v1/api/flow-meter-spare', flowMeterSpareRoutes);
+app.use('/v1/api/get-columns', getColumnsRoutes);
 
 // Start the server
 app.listen(port, () => {
