@@ -13,12 +13,12 @@ const getDepartments = async (req, res) => {
 
 // Get parts by department
 const getPartsByDepartment = async (req, res) => {
-    const { department } = req.query;
-    if (!department) {
-        return res.status(400).json({ success: false, message: 'Department is required' });
-    }
+    // const { department } = req.query;
+    // if (!department) {
+    //     return res.status(400).json({ success: false, message: 'Department is required' });
+    // }
     try {
-        const parts = await controlValveActiveModel.getPartsByDepartment(department);
+        const parts = await controlValveActiveModel.getPartsByDepartment();
         res.status(200).json({ success: true, data: parts });
     } catch (err) {
         console.error('Error fetching parts by department:', err);  // Log the error

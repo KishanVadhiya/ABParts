@@ -11,9 +11,9 @@ const getDepartments = async () => {
 };
 
 // Get parts by department
-const getPartsByDepartment = async (department) => {
+const getPartsByDepartment = async () => {
     try {
-        const [rows] = await db.query('SELECT * FROM control_valve_active WHERE department = ?', [department]);
+        const [rows] = await db.query('SELECT * FROM control_valve_active;');
         return rows;
     } catch (err) {
         throw new Error('Failed to fetch parts by department: ' + err.message);

@@ -22,9 +22,21 @@ const AddNewPart = () => {
         `http://localhost:3000/v1/api/get-columns?division=${division}&parttype=${partType}`
       );
       const data = await response.json();
-      setFormFields(data.columns); // Assuming the API returns a `columns` array
+      if (data.success && Array.isArray(data.data)) {
+        // Filter out 'sr_no' and map COLUMN_NAME to form fields
+        const fields = data.data
+          .filter((col) => col.COLUMN_NAME !== 'sr_no') // Exclude 'sr_no'
+          .map((col) => ({
+            name: col.COLUMN_NAME,
+            label: col.COLUMN_NAME.replace(/_/g, ' ').toUpperCase(), // Human-readable labels
+          }));
+        setFormFields(fields);
+      } else {
+        alert('Failed to fetch columns. Please try again.');
+      }
     } catch (error) {
       console.error('Error fetching columns:', error);
+      alert('An error occurred while fetching form fields.');
     } finally {
       setLoading(false);
     }
@@ -56,11 +68,13 @@ const AddNewPart = () => {
       });
       if (response.ok) {
         alert('Part added successfully!');
+        setFormData({}); // Clear form data on success
       } else {
         alert('Failed to add part.');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
+      alert('An error occurred while submitting the form.');
     }
   };
 
@@ -111,7 +125,6 @@ const AddNewPart = () => {
                     onChange={(e) =>
                       handleInputChange(field.name, e.target.value)
                     }
-                    placeholder={field.placeholder || ''}
                   />
                 </div>
               ))}
