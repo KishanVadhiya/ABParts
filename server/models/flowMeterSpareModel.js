@@ -54,6 +54,8 @@ const updatePart = async (sr_no, updatedDetails) => {
 };
 
 const deletePart = async (sr_no) => {
+    console.log("Reached here .......");
+    console.log("The sr_no: ",sr_no);
     const query = 'DELETE FROM flow_meter_spare WHERE sr_no = ?';
 
     try {

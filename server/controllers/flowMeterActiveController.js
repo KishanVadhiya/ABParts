@@ -14,9 +14,9 @@ const getDepartments = async (req, res) => {
 // Get parts by department
 const getPartsByDepartment = async (req, res) => {
     const { department } = req.query;
-    if (!department) {
-        return res.status(400).json({ success: false, message: 'Department is required' });
-    }
+    // if (!department) {
+    //     return res.status(400).json({ success: false, message: 'Department is required' });
+    // }
     try {
         const parts = await flowMeterActiveModel.getPartsByDepartment(department);
         res.status(200).json({ success: true, data: parts });

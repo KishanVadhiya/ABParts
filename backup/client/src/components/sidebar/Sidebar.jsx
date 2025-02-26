@@ -14,7 +14,7 @@ const Sidebar = () => {
 };
 
 const styles = {
-  container: {
+  container: { 
     width: '200px',
     height: '100vh',
     backgroundColor: '#333',
@@ -23,6 +23,8 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
     paddingTop: '20px',
+    'max-width':'20%',
+    'max-height':'90%'
   },
   heading: {
     fontSize: '20px',

@@ -17,6 +17,7 @@ const styles = {
     height: '80px',
     backgroundColor: '#f4f4f9',
     boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
+    'max-height':'10%'
   },
   logo: {
     maxHeight: '60px',

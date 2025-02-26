@@ -13,7 +13,7 @@ const getDepartments = async () => {
 // Get parts by department
 const getPartsByDepartment = async (department) => {
     try {
-        const [rows] = await db.query('SELECT * FROM flow_meter_active WHERE department = ?', [department]);
+        const [rows] = await db.query('SELECT * FROM flow_meter_active', [department]);
         return rows;
     } catch (err) {
         throw new Error('Failed to fetch parts by department: ' + err.message);
