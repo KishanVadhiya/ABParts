@@ -7,7 +7,7 @@
 }
 .active-control-valve-table {
     width: 100%;
-    max-width: 1000px; /* Set a max-width to prevent overflow */
+    max-width: 800px; /* Reduced max-width to fit on the screen */
     border-collapse: collapse;
     border-radius: 12px;
     margin: 5px auto; /* Center horizontally */
@@ -30,7 +30,7 @@
 }
 
 .active-control-valve-table th {
-    width: 150px; /* Set a specific width for table headers */
+    width: 120px; /* Reduced width for table headers */
 }
 
 .active-control-valve-table tbody tr {
@@ -89,7 +89,7 @@
 }
 
 .active-control-valve-form input {
-    width: 200px; /* Set a specific width for input boxes */
+    width: 150px; /* Reduced width for input boxes */
     padding: 6px; /* Reduced padding */
     border: 1px solid #dddddd;
     border-radius: 5px;
