@@ -1,0 +1,77 @@
+/* ActiveControlValve.css */
+
+.active-control-valve-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+.active-control-valve-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.active-control-valve-table th, .active-control-valve-table td {
+    padding: 12px 15px;
+    border: 1px solid #dddddd;
+}
+
+.active-control-valve-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.active-control-valve-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.active-control-valve-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.active-control-valve-button {
+    background-color: #009879;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.active-control-valve-button:hover {
+    background-color: #007f63;
+}
+
+.active-control-valve-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.active-control-valve-form div {
+    display: flex;
+    flex-direction: column;
+}
+
+.active-control-valve-form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.active-control-valve-form input {
+    padding: 10px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+}
+
+.active-control-valve-form button[type="submit"] {
+    background-color: #4CAF50;
+}
+
+.active-control-valve-form button[type="button"] {
+    background-color: #f44336;
+}
