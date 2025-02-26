@@ -1,11 +1,19 @@
 /* ActiveControlValve.css */
-
+.form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+}
 .active-control-valve-table {
     width: 100%;
+    max-width: 1000px; /* Set a max-width to prevent overflow */
     border-collapse: collapse;
-    margin: 20px 0;
-    font-size: 18px;
+    border-radius: 12px;
+    margin: 5px auto; /* Center horizontally */
+    font-size: 14px; /* Smaller font size */
     text-align: left;
+    color: #333333;
 }
 
 .active-control-valve-table thead tr {
@@ -16,8 +24,13 @@
 }
 
 .active-control-valve-table th, .active-control-valve-table td {
-    padding: 12px 15px;
+    padding: 6px 8px; /* Reduced padding */
     border: 1px solid #dddddd;
+    color: #333333;
+}
+
+.active-control-valve-table th {
+    width: 150px; /* Set a specific width for table headers */
 }
 
 .active-control-valve-table tbody tr {
@@ -36,9 +49,9 @@
     background-color: #009879;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 6px 12px; /* Reduced padding */
     cursor: pointer;
-    margin: 5px;
+    margin: 3px;
 }
 
 .active-control-valve-button:hover {
@@ -48,24 +61,41 @@
 .active-control-valve-form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin: 20px 0;
+    align-items: center; /* Center horizontally */
+    gap: 6px; /* Reduced gap */
+    margin: 5px 0; /* Reduced margin */
+    color: #333333;
+    border: 1px solid #dddddd; /* Added border */
+    padding: 10px; /* Added padding */
+    border-radius: 5px; /* Added border radius */
+    width: 80%; /* Set a specific width */
+    max-width: 400px; /* Set a max-width to prevent overflow */
 }
 
 .active-control-valve-form div {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between; /* Align items and inputs like a menu */
+    width: 100%; /* Ensure full width */
+    gap: 6px; /* Reduced gap */
 }
 
 .active-control-valve-form label {
-    margin-bottom: 5px;
+    margin-bottom: 0;
     font-weight: bold;
+    color: #333333;
+    flex: 1; /* Allow labels to take up available space */
+    text-align: left; /* Align labels to the left */
 }
 
 .active-control-valve-form input {
-    padding: 10px;
+    width: 200px; /* Set a specific width for input boxes */
+    padding: 6px; /* Reduced padding */
     border: 1px solid #dddddd;
     border-radius: 5px;
+    color: #333333;
+    flex: 1; /* Allow inputs to take up available space */
+    text-align: right; /* Align inputs to the right */
 }
 
 .active-control-valve-form button[type="submit"] {

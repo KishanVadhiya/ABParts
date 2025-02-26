@@ -3,6 +3,7 @@ import axios from 'axios';
 import { LiaEdit } from "react-icons/lia";
 import { MdDeleteForever } from "react-icons/md";
 import './ActiveControlValve.css'
+
 const ActiveControlValve = () => {
   const apiurl = import.meta.env.VITE_BACKEND_URL;
   const [columns, setColumns] = useState([]);
@@ -81,7 +82,8 @@ const ActiveControlValve = () => {
   return (
     <div>
       {editingPart ? (
-        <form onSubmit={handleFormSubmit}>
+        <div className="form-container">
+        <form className="active-control-valve-form" onSubmit={handleFormSubmit}>
           {columns.map((column, index) => (
             <div key={index}>
               <label>{column.COLUMN_NAME}</label>
@@ -93,11 +95,12 @@ const ActiveControlValve = () => {
               />
             </div>
           ))}
-          <button type="submit">Submit</button>
-          <button type="button" onClick={() => setEditingPart(null)}>Cancel</button>
+          <button type="submit" className="active-control-valve-button">Submit</button>
+          <button type="button" className="active-control-valve-button" onClick={() => setEditingPart(null)}>Cancel</button>
         </form>
+        </div>
       ) : (
-        <table>
+        <table className="active-control-valve-table">
           <thead>
             <tr>
               {columns.map((column, index) => (
@@ -113,8 +116,8 @@ const ActiveControlValve = () => {
                   <td key={index}>{part[column.COLUMN_NAME]}</td>
                 ))}
                 <td>
-                  <button onClick={() => handleEditClick(part)}><LiaEdit /></button>
-                  <button onClick={() => handleDelete(part.sr_no)}><MdDeleteForever /></button>
+                  <button className="active-control-valve-button" onClick={() => handleEditClick(part)}><LiaEdit /></button>
+                  <button className="active-control-valve-button" onClick={() => handleDelete(part.sr_no)}><MdDeleteForever /></button>
                 </td>
               </tr>
             ))}
