@@ -38,13 +38,21 @@ const AddPart = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     const endpoint = `http://localhost:3000/v1/api/${partType}-${division}/parts`;
-    await fetch(endpoint, {
+    const response = await fetch(endpoint, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(formData),
     });
+
+    if (response.ok) {
+      alert('Successfully added');
+      setDivision('');
+      setPartType('');
+      setColumns([]);
+      setFormData({});
+    }
   };
 
   return (
@@ -54,21 +62,25 @@ const AddPart = () => {
         <div>
           <label>
             Division:
-            <select value={division} onChange={handleDivisionChange}>
-              <option value="">Select Division</option>
-              <option value="active">Active</option>
-              <option value="spare">Spare</option>
-            </select>
+            <div>
+              <select value={division} onChange={handleDivisionChange}>
+                <option value="">Select Division</option>
+                <option value="active">Active</option>
+                <option value="spare">Spare</option>
+              </select>
+            </div>
           </label>
         </div>
         <div>
           <label>
             Part Type:
-            <select value={partType} onChange={handlePartTypeChange}>
-              <option value="">Select Part Type</option>
-              <option value="flow-meter">Flow Meter</option>
-              <option value="control-valve">Control Valve</option>
-            </select>
+            <div>
+              <select value={partType} onChange={handlePartTypeChange}>
+                <option value="">Select Part Type</option>
+                <option value="flow-meter">Flow Meter</option>
+                <option value="control-valve">Control Valve</option>
+              </select>
+            </div>
           </label>
         </div>
         <button type="submit" className="active-control-valve-button">Get Columns</button>
@@ -81,7 +93,9 @@ const AddPart = () => {
             <div key={index}>
               <label>
                 {column}:
-                <input type="text" name={column} onChange={handleFormChange} />
+                <div>
+                  <input type="text" name={column} onChange={handleFormChange} />
+                </div>
               </label>
             </div>
           ))}

@@ -1,9 +1,19 @@
 header{
     padding: 30px;
-    background: #011627;
+    background: #FFFFF0;
     max-height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 header svg{
     font-size: 40px;
+    position: absolute;
+    left:2%;
+    color: #011627;
+}
+
+header > img{
+    height: 80px;
 }

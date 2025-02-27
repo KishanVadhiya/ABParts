@@ -1,0 +1,38 @@
+.about-us-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+
+  }
+  
+  .about-us-content h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .about-us-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: black;
+    margin-bottom: 15px;
+  }
+  
+  .location-section {
+    margin-top: 40px;
+  }
+  
+  .location-section h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .map-container {
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }

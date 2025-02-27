@@ -40,6 +40,9 @@
 .active-control-valve-table tbody tr:nth-of-type(even) {
     background-color: #f3f3f3;
 }
+.active-control-valve-table tbody tr:nth-of-type(odd) {
+    background-color: #9d9d9d;
+}
 
 .active-control-valve-table tbody tr:last-of-type {
     border-bottom: 2px solid #009879;
@@ -70,6 +73,8 @@
     border-radius: 5px; /* Added border radius */
     width: 80%; /* Set a specific width */
     max-width: 400px; /* Set a max-width to prevent overflow */
+    /* background-color: #ababff; */
+    font-size: large;
 }
 
 .active-control-valve-form div {
